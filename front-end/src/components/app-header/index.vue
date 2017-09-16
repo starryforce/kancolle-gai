@@ -3,16 +3,13 @@
     <nav class="m-nav">
       <ul>
         <li>
-          <a href="#">主页</a>
+          <router-link to="/home">主页</router-link>
         </li>
         <li>
-          <a href="#">教程</a>
+          <router-link to="/tutorial">教程</router-link>
         </li>
         <li>
-          <a href="#">工具</a>
-        </li>
-        <li>
-          <a href="#">素材</a>
+          <router-link to="/tool">工具</router-link>
         </li>
       </ul>
     </nav>
