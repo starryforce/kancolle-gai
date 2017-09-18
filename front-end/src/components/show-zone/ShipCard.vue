@@ -1,13 +1,13 @@
 <template>
   <div class="shipCard">
-    <a href="">
+    <router-link to="/carddetail/1">
       <img src="../../temp/大和示例.jpg" alt="">
       <p>大和-夏季花火</p>
       <p>
         <span>下载:10086次</span>
         <span>评分:10</span>
       </p>
-    </a>
+    </router-link>
   </div>
 </template>
 

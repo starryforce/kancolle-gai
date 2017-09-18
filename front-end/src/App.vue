@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <app-header class="g-header"></app-header>
+    <app-header class="g-head"></app-header>
     <router-view class="g-body"></router-view>
-    <app-footer class="g-footer"></app-footer>
+    <app-footer class="g-foot"></app-footer>
   </div>
 </template>
 
@@ -28,7 +28,7 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-.g-header {
+.g-head {
   width: 100%;
 }
 
@@ -37,7 +37,7 @@ export default {
   margin: 0 auto;
 }
 
-.g-footer {
+.g-foot {
   width: 100%;
 }
 </style>
