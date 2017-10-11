@@ -1,19 +1,19 @@
 <template>
   <aside>
     <div class="m-menu">
-      <app-menu :shipInfo="initialShipInfo"></app-menu>
+      <SideBarMenu :shipInfo="initialShipInfo" />
     </div>
   </aside>
 </template>
 
 <script>
 import initialShipInfo from '@/json/newShipInfo.json';
-import AppMenu from './AppMenu';
+import SideBarMenu from './SideBarMenu';
 
 export default {
   name: 'SideBar',
   components: {
-    AppMenu,
+    SideBarMenu,
   },
   data() {
     return {

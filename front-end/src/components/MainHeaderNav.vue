@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: 'AppNav',
+  name: 'MainHeaderNav',
 };
 </script>
 

@@ -1,35 +1,35 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from '@/views/Home';
-import Tutorial from '@/views/Tutorial';
-import Tool from '@/views/Tool';
-import CardDetail from '@/views/CardDetail';
+import MainHome from '@/components/MainHome';
+import MainTutorial from '@/components/MainTutorial';
+import MainTool from '@/components/MainTool';
+import CardDetail from '@/components/CardDetail';
 
 Vue.use(Router);
 
 export default new Router({
   routes: [{
     path: '/',
-    component: Home,
+    component: MainHome,
   },
   {
     path: '/home',
-    name: 'Home',
-    component: Home,
+    name: 'home',
+    component: MainHome,
   },
   {
     path: '/tutorial',
-    name: 'Tutorial',
-    component: Tutorial,
+    name: 'mainTutorial',
+    component: MainTutorial,
   },
   {
     path: '/tool',
-    name: 'Tool',
-    component: Tool,
+    name: 'mainTool',
+    component: MainTool,
   },
   {
     path: '/carddetail/:cardId',
-    name: 'CardDetail',
+    name: 'cardDetail',
     component: CardDetail,
   },
   ],

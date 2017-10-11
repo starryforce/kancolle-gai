@@ -1,12 +1,12 @@
 <template>
   <p>
-    tool
+    tutorial
   </p>
 </template>
 
 <script>
 export default {
-  name: 'Tool',
+  name: 'MainTutorial',
 };
 </script>
 

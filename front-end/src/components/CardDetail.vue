@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="m-preview"><img src="../temp/大和示例.jpg" alt=""></div>
+    <div class="m-preview"><img src="../temp/example.jpg" alt=""></div>
     <div class="m-detail">
       <p>标题：</p>
       <p>本名：</p>

@@ -3,13 +3,13 @@
     <li v-for="(item,index) of shipInfo" :key="index">
       <a v-if="item.type">{{item.type}}</a>
       <a v-if="item.name" :href="item.url">{{item.name}}</a>
-      <app-menu v-if="item.subs && item.subs.length>0" :shipInfo="item.subs"></app-menu>
+      <SideBarMenu v-if="item.subs && item.subs.length>0" :shipInfo="item.subs"/>
     </li>
   </ul>
 </template>
 <script>
 export default {
-  name: 'AppMenu',
+  name: 'SideBarMenu',
   props: {
     shipInfo: {
       type: Array,

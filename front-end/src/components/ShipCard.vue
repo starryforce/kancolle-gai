@@ -1,7 +1,7 @@
 <template>
   <div class="shipCard">
     <router-link to="/carddetail/1">
-      <img src="../../temp/大和示例.jpg" alt="">
+      <img src="../temp/example.jpg" alt="">
       <p>大和-夏季花火</p>
       <p>
         <span>下载:10086次</span>

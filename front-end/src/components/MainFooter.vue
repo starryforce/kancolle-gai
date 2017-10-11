@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-  name: 'AppFooter',
+  name: 'MainFooter',
 };
 </script>
 <style lang="scss" scoped>

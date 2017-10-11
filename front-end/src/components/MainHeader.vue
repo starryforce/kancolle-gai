@@ -1,6 +1,6 @@
 <template>
   <header class="m-header">
-    <app-nav></app-nav>
+    <MainHeaderNav />
     <div class="g-container">
       <div class="m-logo">
         <a href="#"></a>
@@ -16,12 +16,12 @@
 </template>
 
 <script>
-import AppNav from './AppNav';
+import MainHeaderNav from './MainHeaderNav';
 
 export default {
-  name: 'AppHeader',
+  name: 'MainHeader',
   components: {
-    AppNav,
+    MainHeaderNav,
   },
 };
 </script>
@@ -29,7 +29,7 @@ export default {
 <style lang="scss" scoped>
 .m-header {
   background: {
-    image: url("../../temp/starrynight.jpg"); //暂时用B站头图，大小合适。。。
+    image: url("../temp/64209157_p0.png"); //暂时用B站头图，大小合适。。。
     // image: url("//i0.hdslb.com/bfs/archive/17759bd2d61eb97e992642f79a15ddabd015d0dc.png");
     position: center;
   }
@@ -51,7 +51,7 @@ export default {
     height: 100px;
     background: {
       size: 100px 100px;
-      image: url("../../assets/logo.png");
+      image: url("../assets/logo.png");
       repeat: no-repeat;
     }
   }

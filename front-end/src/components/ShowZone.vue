@@ -4,7 +4,7 @@
       <h1>热点</h1>
     </div>
     <div class="m-cards clearfix">
-      <ship-card v-for="item in 5"></ship-card>
+      <ship-card v-for="item in 5" :key=item></ship-card>
     </div>
   </section>
 </template>
