@@ -2,7 +2,8 @@ const isProduction = process.env.NODE_ENV === 'production';
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
 const controller = require('./controller');
-const templating = require('./templating');
+const templating = require('./middlewares/templating');
+const rest = require('./middlewares/rest')
 const model = require('./model');
 
 const app = new Koa();
@@ -18,7 +19,7 @@ app.use(async(ctx, next) => {
 });
 // 静态资源处理
 if (!isProduction) {
-  let staticFiles = require('./static-files');
+  let staticFiles = require('./middlewares/static-files');
   app.use(staticFiles('/static/', __dirname + '/static'));
 }
 // 请求头解析
@@ -28,6 +29,8 @@ app.use(templating('views', {
   noCache: !isProduction,
   watch: !isProduction
 }));
+// 绑定rest方法
+app.use(rest.restify());
 // 路由
 app.use(controller());
 

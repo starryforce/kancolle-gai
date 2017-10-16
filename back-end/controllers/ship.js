@@ -1,23 +1,29 @@
-// 存储Product列表，相当于模拟数据库:
-var products = [{
-  name: 'iPhone',
-  price: 6999
-}, {
-  name: 'Kindle',
-  price: 999
-}];
+const Ship = require('../models/Ship');
 const getShips = async(ctx, next) => {
-
+  let result = await Ship.findAll({
+    where: {
+      name: 'Odie',
+    }
+  });
+  ctx.rest(result);
 }
 
 const setShip = async(ctx, next) => {
-  ctx.response.type = 'application/json';
-  ctx.response.body = {
-    products: products
-  };
+  console.log('enter setShip');
+  let kandoel = await Ship.create({
+    id: 'd-1',
+    identifier: 110,
+    name: 'Odie',
+    type: 'BattleShip',
+    subType: 'kango',
+    level: 'tosfsd',
+  });
+  console.log('created: ' + JSON.stringify(kandoel));
+
+  ctx.rest(kandoel);
 }
 
 module.exports = {
   'GET /v1/ships': getShips,
-  'POST /v1/ships': setShip,
+  'POST /v1/ships': getShips,
 }
