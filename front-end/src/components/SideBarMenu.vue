@@ -3,7 +3,7 @@
     <li v-for="(item,index) of shipInfo" :key="index">
       <a v-if="item.type">{{item.type}}</a>
       <a v-if="item.name" :href="item.url">{{item.name}}</a>
-      <SideBarMenu v-if="item.subs && item.subs.length>0" :shipInfo="item.subs"/>
+      <SideBarMenu v-if="item.subs && item.subs.length>0" :shipInfo="item.subs" />
     </li>
   </ul>
 </template>

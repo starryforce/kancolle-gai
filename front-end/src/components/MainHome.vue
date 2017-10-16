@@ -2,10 +2,10 @@
   <div>
     <SideBar class="g-side" />
     <div class="g-main">
-      <ShowZone class="m-hot"/>
-      <ShowZone class="m-carousel"/>
-      <ShowZone class="m-top"/>
-      <ShowZone class="m-new"/>
+      <ShowZone class="m-hot" />
+      <ShowZone class="m-carousel" />
+      <ShowZone class="m-top" />
+      <ShowZone class="m-new" />
     </div>
   </div>
 </template>

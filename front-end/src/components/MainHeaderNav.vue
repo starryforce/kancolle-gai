@@ -10,6 +10,9 @@
       <li>
         <router-link to="/tool">工具</router-link>
       </li>
+      <li>
+        <router-link to="/console">控制台</router-link>
+      </li>
     </ul>
   </nav>
 </template>
@@ -38,14 +41,8 @@ export default {
       right: 1rem;
       left: 1rem;
     }
-    &:link,
-    &:visited,
-    &:hover,
-    &:focus,
-    &:active {
-      text-decoration: none;
-      color: #fff;
-    }
+    text-decoration: none;
+    color: #fff;
     &:hover {
       background-color: rgba(0, 0, 0, 0.8);
     }

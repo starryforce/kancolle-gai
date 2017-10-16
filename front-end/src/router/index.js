@@ -4,6 +4,8 @@ import MainHome from '@/components/MainHome';
 import MainTutorial from '@/components/MainTutorial';
 import MainTool from '@/components/MainTool';
 import CardDetail from '@/components/CardDetail';
+import MainConsole from '@/components/MainConsole';
+import MainConsoleShips from '@/components/MainConsoleShips';
 
 Vue.use(Router);
 
@@ -19,16 +21,28 @@ export default new Router({
   },
   {
     path: '/tutorial',
-    name: 'mainTutorial',
+    name: 'tutorial',
     component: MainTutorial,
   },
   {
     path: '/tool',
-    name: 'mainTool',
+    name: 'tool',
     component: MainTool,
   },
   {
-    path: '/carddetail/:cardId',
+    path: '/console',
+    name: 'console',
+    component: MainConsole,
+    children: [
+      {
+        path: 'ships',
+        name: 'ships',
+        component: MainConsoleShips,
+      },
+    ],
+  },
+  {
+    path: '/cardDetail/:cardId',
     name: 'cardDetail',
     component: CardDetail,
   },
