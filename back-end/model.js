@@ -4,7 +4,7 @@ const db = require('./db');
 let files = fs.readdirSync(__dirname + '/models');
 
 let js_files = files.filter((f) => {
-    return f.endsWith('.js');
+    return (f.endsWith('.js')) && (f.indexOf('.') !== 0) ;
 }, files);
 
 module.exports = {};
