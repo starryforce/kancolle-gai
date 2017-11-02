@@ -29,7 +29,7 @@ export default {
   ul {
     height: 42px;
     margin: 0 auto;
-    width: 1160px;
+    max-width: 1160px;
   }
   li {
     float: left;

@@ -1,7 +1,7 @@
 <template>
   <header class="m-header">
     <MainHeaderNav />
-    <div class="g-container">
+    <div class="content">
       <div class="m-logo">
         <a href="#"></a>
       </div>
@@ -35,16 +35,19 @@ export default {
   }
 }
 
-.g-container {
+.m-header .content {
   position: relative;
-  width: 1160px;
+  max-width: 1160px;
   height: 138px;
   margin: 0 auto;
 }
 
-.m-logo {
+.m-headr .m-log {
   position: absolute;
   bottom: 20px;
+}
+
+.m-logo {
   a {
     display: block;
     width: 100px;
@@ -57,7 +60,7 @@ export default {
   }
 }
 
-.m-search {
+.m-header .m-search {
   position: absolute;
   right: 20px;
   bottom: 25px;

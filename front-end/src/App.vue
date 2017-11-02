@@ -23,17 +23,14 @@ export default {
 <style lang="scss" src="@/styles/tools.scss"></style>
 
 <style lang="scss" scoped>
-.g-head {
+.g-head,
+.g-foot {
   width: 100%;
 }
 
 .g-body {
-  width: 1160px;
+  max-width: 1160px;
   margin: 0 auto;
-}
-
-.g-foot {
-  width: 100%;
 }
 </style>
 

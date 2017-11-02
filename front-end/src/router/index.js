@@ -5,7 +5,9 @@ import MainTutorial from '@/components/MainTutorial';
 import MainTool from '@/components/MainTool';
 import CardDetail from '@/components/CardDetail';
 import MainConsole from '@/components/MainConsole';
-import MainConsoleShips from '@/components/MainConsoleShips';
+import MainConsoleShip from '@/components/MainConsoleShip';
+import MainConsoleShipType from '@/components/MainConsoleShipType';
+import MainConsoleCard from '@/components/MainConsoleCard';
 
 Vue.use(Router);
 
@@ -35,9 +37,19 @@ export default new Router({
     component: MainConsole,
     children: [
       {
-        path: 'ships',
-        name: 'ships',
-        component: MainConsoleShips,
+        path: 'ship',
+        name: 'ship',
+        component: MainConsoleShip,
+      },
+      {
+        path: 'shiptype',
+        name: 'shiptype',
+        component: MainConsoleShipType,
+      },
+      {
+        path: 'card',
+        name: 'card',
+        component: MainConsoleCard,
       },
     ],
   },
