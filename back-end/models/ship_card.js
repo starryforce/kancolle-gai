@@ -1,13 +1,16 @@
-const db = require('../db');
-const ship = require('./ship');
+"use strict";
+const db = require('../db.js');
 
-module.exports = db.defineModel('ship_card', {
-  name: db.STRING,
-  ship_name:{
-    type:db.STRING,
-    reference:{
-      model:ship,
-      key:'name',
+module.exports = (sequelize, DataTypes) => {
+  const ship_card = db.defineModel("ship_card", {
+    name: DataTypes.STRING,
+    ship_name:{
+      type:DataTypes.STRING,
     }
+  });
+
+  ship_card.associate = (models) => {
   }
-});
+
+  return ship_card;
+};

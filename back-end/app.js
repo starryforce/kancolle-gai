@@ -4,7 +4,6 @@ const bodyParser = require('koa-bodyparser');
 const controller = require('./controller');
 const templating = require('./middlewares/templating');
 const rest = require('./middlewares/rest')
-const model = require('./model');
 
 const app = new Koa();
 
@@ -31,7 +30,7 @@ app.use(templating('views', {
 }));
 // 绑定rest方法
 app.use(rest.restify());
-// 路由
+// 路由绑定拆分到 controller.js 文件中
 app.use(controller());
 
 app.listen(3000);

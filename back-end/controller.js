@@ -1,5 +1,6 @@
 const fs = require('fs');
 
+// 将每个控制器文件输出的对象中的“路径-处理函数”对注册到路由中
 function addMapping(router, mapping) {
     for (var url in mapping) {
         if (url.startsWith('GET ')) {
@@ -24,6 +25,7 @@ function addMapping(router, mapping) {
     }
 }
 
+// 读取控制器目录下的各个文件
 function addControllers(router, dir) {
     var files = fs.readdirSync(__dirname + '/'+dir);
     var js_files = files.filter((f) => {
@@ -36,8 +38,9 @@ function addControllers(router, dir) {
     }
 }
 
+// 传入路由处理器所在的文件夹
 module.exports = function (dir) {
-    let
+    const
         controllers_dir = dir || 'controllers',
         router = require('koa-router')();
     addControllers(router, controllers_dir);

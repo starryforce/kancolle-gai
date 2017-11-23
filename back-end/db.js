@@ -1,13 +1,8 @@
 const Sequelize = require('sequelize');
 const uuid = require('node-uuid');
-const config = require('./config/sequelize.js');
+const config = require('./config/sequelize');
 
 console.log('init sequelize...');
-
-function generateId() {
-  return uuid.v4();
-}
-
 const sequelize = new Sequelize(config.database, config.username, config.password, {
   host: config.host,
   dialect: config.dialect,
@@ -22,6 +17,10 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
     underscoredAll: true,
   }
 });
+
+function generateId() {
+  return uuid.v4();
+}
 
 function defineModel(name, attributes) {
   var attrs = {};
@@ -81,7 +80,10 @@ function defineModel(name, attributes) {
 }
 
 const db = {
+  Sequelize: Sequelize,
+  sequelize: sequelize,
   defineModel: defineModel,
+  generateId: generateId,
   sync: () => {
     // only allow create ddl in non-production environment:
     if (process.env.NODE_ENV !== 'production') {
@@ -92,15 +94,7 @@ const db = {
     } else {
       throw new Error('Cannot sync() when NODE_ENV is set to \'production\'.');
     }
-  }
+  },
 };
-const TYPES = ['STRING', 'INTEGER', 'BIGINT', 'TEXT', 'DOUBLE', 'DATEONLY', 'BOOLEAN'];
-for (let type of TYPES) {
-  db[type] = Sequelize[type];
-}
-
-db.generateId = generateId;
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
 
 module.exports = db;

@@ -1,29 +1,19 @@
-const Ship = require('../models/Ship');
-const getShips = async(ctx, next) => {
-  let result = await Ship.findAll({
-    where: {
-      name: 'Odie',
-    }
-  });
-  ctx.rest(result);
-}
+const model = require('../models');
+ship = model.ship
 
 const setShip = async(ctx, next) => {
   console.log('enter setShip');
-  let kandoel = await Ship.create({
-    id: 'd-1',
-    identifier: 110,
-    name: 'Odie',
-    type: 'BattleShip',
-    subType: 'kango',
-    level: 'tosfsd',
+  var a = Math.random().toString();
+  let kancolle = await ship.create({
+    name: a,
+    ship_subtype: a,
   });
-  console.log('created: ' + JSON.stringify(kandoel));
+  console.log('created: ' + JSON.stringify(kancolle));
 
-  ctx.rest(kandoel);
+  ctx.rest(kancolle);
 }
 
 module.exports = {
-  'GET /v1/ships': getShips,
-  'POST /v1/ships': getShips,
+  'GET /v1/ships': setShip,
+  'POST /v1/ships': setShip,
 }
