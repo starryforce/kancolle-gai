@@ -3,10 +3,10 @@
     <aside class="m-menu">
       <ul>
         <li>
-          <router-link to='/console/ship'>舰船管理</router-link>
+          <router-link to='/console/shiptype'>舰船类型管理</router-link>
         </li>
         <li>
-          <router-link to='/console/shiptype'>舰船类型管理</router-link>
+          <router-link to='/console/ship'>舰船管理</router-link>
         </li>
         <li>
           <router-link to='/console/card'>魔改管理</router-link>

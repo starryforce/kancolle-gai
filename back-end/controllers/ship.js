@@ -1,5 +1,5 @@
 const model = require('../models');
-ship = model.ship
+const ship = model.ship
 
 const setShip = async(ctx, next) => {
   console.log('enter setShip');
