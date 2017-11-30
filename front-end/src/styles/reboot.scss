@@ -26,6 +26,7 @@ hr,
 input,
 legend,
 li,
+main,
 nav,
 ol,
 p,
@@ -36,7 +37,7 @@ textarea,
 th,
 ul {
   margin: 0;
-  padding: 0
+  padding: 0;
 }
 
 ul {
@@ -53,4 +54,13 @@ html {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: inherit;
+}
+
+.el-container,
+.el-header,
+.el-footer,
+.el-main,
+.el-aside {
+  margin: 0;
+  padding: 0;
 }

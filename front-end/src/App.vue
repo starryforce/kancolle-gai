@@ -1,36 +1,26 @@
 <template>
-  <div id="app">
-    <MainHeader class="g-head" />
+  <el-container id="app">
+    <HomeHeader class="g-head" />
     <router-view class="g-body"></router-view>
-    <MainFooter class="g-foot" />
-  </div>
+    <HomeFooter class="g-foot" />
+  </el-container>
 </template>
 
 <script>
-import MainHeader from '@/components/MainHeader';
-import MainFooter from '@/components/MainFooter';
+import HomeHeader from './components/HomeHeader';
+import HomeFooter from './components/HomeFooter';
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
-    MainHeader,
-    MainFooter,
+    HomeHeader,
+    HomeFooter,
   },
 };
 </script>
 
-<style lang="scss" src="@/styles/reboot.scss"></style>
-<style lang="scss" src="@/styles/tools.scss"></style>
+<style lang="scss" src="./styles/reboot.scss"></style>
 
 <style lang="scss" scoped>
-.g-head,
-.g-foot {
-  width: 100%;
-}
 
-.g-body {
-  max-width: 1160px;
-  margin: 0 auto;
-}
 </style>
-
