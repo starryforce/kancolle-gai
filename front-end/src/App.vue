@@ -1,8 +1,8 @@
 <template>
-  <el-container id="app">
-    <HomeHeader class="g-head" />
-    <router-view class="g-body"></router-view>
-    <HomeFooter class="g-foot" />
+  <el-container id="app" direction="vertical">
+    <HomeHeader />
+    <router-view></router-view>
+    <HomeFooter />
   </el-container>
 </template>
 
@@ -20,7 +20,6 @@ export default {
 </script>
 
 <style lang="scss" src="./styles/reboot.scss"></style>
-
-<style lang="scss" scoped>
+<style lang="scss">
 
 </style>

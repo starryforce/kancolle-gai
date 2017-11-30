@@ -1,6 +1,6 @@
 <template>
-  <el-footer class="m-footer" height="138px">
-
+  <el-footer class="m-footer">
+    Footer
   </el-footer>
 </template>
 

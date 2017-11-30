@@ -40,10 +40,7 @@ ul {
   padding: 0;
 }
 
-ul {
-  list-style-type: none;
-}
-
+/* 使用框模型简化像素计算 */
 html {
   box-sizing: border-box;
 }
@@ -56,11 +53,33 @@ html {
   box-sizing: inherit;
 }
 
+ul {
+  list-style-type: none;
+}
+
+a{
+  text-decoration: none;
+}
+
 .el-container,
 .el-header,
 .el-footer,
 .el-main,
 .el-aside {
-  margin: 0;
-  padding: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Temp */
+.el-header,
+.el-footer {
+  background-color: #b3c0d1;
+}
+
+.el-aside {
+  background-color: #d3dce6;
+}
+
+.el-main {
+  background-color: #e9eef3;
 }
