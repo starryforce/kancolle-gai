@@ -1,7 +1,7 @@
 <template>
   <el-container id="app" direction="vertical">
     <HomeHeader />
-    <router-view></router-view>
+    <router-view class="g-main"></router-view>
     <HomeFooter />
   </el-container>
 </template>
@@ -21,5 +21,8 @@ export default {
 
 <style lang="scss" src="./styles/reboot.scss"></style>
 <style lang="scss">
-
+.g-main {
+  width: 1160px;
+  margin: 0 auto;
+}
 </style>

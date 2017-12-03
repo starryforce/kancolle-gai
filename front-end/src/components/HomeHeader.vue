@@ -2,7 +2,7 @@
   <el-header class="m-header">
     <el-row class="content" type="flex" align="middle">
       <el-col :span="3">
-        <a class="logo" href="#">舰娘魔改</a>
+        <router-link class="logo" to="/">舰娘魔改</router-link>
       </el-col>
       <el-col :span="5" :offset="1">
         <el-input v-model="input" placeholder="开始翻小姐姐的衣橱" clearable></el-input>

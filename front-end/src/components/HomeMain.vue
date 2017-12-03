@@ -25,8 +25,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.el-container {
-  width: 1160px;
-  margin: 0 auto;
-}
 </style>

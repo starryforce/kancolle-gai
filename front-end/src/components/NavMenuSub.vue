@@ -3,7 +3,7 @@
     <template v-if="shipInfo && shipInfo[0].type">
       <el-submenu v-for="(item,index) of shipInfo" :key="item.type" :index="item.type">
         <template slot="title">
-          <i class="el-icon-location"></i>
+          <i class="el-icon-setting"></i>
           <span>{{item.type}}</span>
         </template>
         <NavMenuSub v-if="item.subs && item.subs.length>0" :shipInfo="item.subs" />
