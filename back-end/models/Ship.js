@@ -1,19 +1,18 @@
-"use strict";
-const db = require('../db.js');
-
 module.exports = (sequelize, DataTypes) => {
-  const ship = db.defineModel("ship", {
-    name: {
-      type: DataTypes.STRING,
+  const ship = sequelize.custDefine('ship', {
+    code: {
+      type: DataTypes.INTEGER,
       unique: true,
     },
-    ship_subtype: {
+    name: {
       type: DataTypes.STRING,
-    }
+    },
   });
 
   ship.associate = (models) => {
-  }
+    models.ship.belongsTo(models.ship_type, {
+    });
+  };
 
   return ship;
 };

@@ -1,19 +1,18 @@
-const model = require('../models');
-const ship = model.ship
+const models = require('../models');
 
-const setShip = async(ctx, next) => {
+const { ship } = models;
+
+const setShip = async (ctx, next) => {
   console.log('enter setShip');
-  var a = Math.random().toString();
-  let kancolle = await ship.create({
-    name: a,
-    ship_subtype: a,
+  const result = await ship.create({
+    code: ctx.request.body.code,
+    name: ctx.request.body.name,
+    ship_type_id: ctx.request.body.ship_type_id,
   });
-  console.log('created: ' + JSON.stringify(kancolle));
-
-  ctx.rest(kancolle);
-}
+  ctx.rest(result);
+  console.log(`created: ${JSON.stringify(result)}`);
+};
 
 module.exports = {
-  'GET /v1/ships': setShip,
   'POST /v1/ships': setShip,
-}
+};

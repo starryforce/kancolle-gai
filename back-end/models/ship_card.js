@@ -1,16 +1,12 @@
-"use strict";
-const db = require('../db.js');
-
 module.exports = (sequelize, DataTypes) => {
-  const ship_card = db.defineModel("ship_card", {
+  const shipCard = sequelize.custDefine('ship_card', {
     name: DataTypes.STRING,
-    ship_name:{
-      type:DataTypes.STRING,
-    }
+    ship_name: {
+      type: DataTypes.STRING,
+    },
   });
 
-  ship_card.associate = (models) => {
-  }
+  shipCard.associate = () => {};
 
-  return ship_card;
+  return shipCard;
 };

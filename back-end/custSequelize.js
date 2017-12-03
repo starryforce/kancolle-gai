@@ -1,68 +1,72 @@
 const Sequelize = require('sequelize');
-const uuid = require('node-uuid');
+const uuid = require('uuid');
 const config = require('./config/sequelize');
+
+const env = process.env.NODE_ENV || 'development';
 
 console.log('init sequelize...');
 const sequelize = new Sequelize(config.database, config.username, config.password, {
   host: config.host,
   dialect: config.dialect,
   port: config.port,
+  operatorsAliases: false, // 为了安全性禁用运算符别名
   pool: {
     max: 5,
     min: 0,
-    idle: 10000
+    idle: 10000,
   },
   define: {
     underscored: true,
     underscoredAll: true,
-  }
+  },
 });
+
+const custSequelize = Object.create(sequelize);
 
 function generateId() {
   return uuid.v4();
 }
 
-function defineModel(name, attributes) {
-  var attrs = {};
-  for (let key in attributes) {
-    let value = attributes[key];
-    if (typeof value === 'object' && value['type']) {
-      value.allowNull = value.allowNull || false;
+function custDefine(name, attributes) {
+  const attrs = {};
+  Object.entries(attributes).forEach(([key, value]) => {
+    if (typeof value === 'object' && value.type) {
       attrs[key] = value;
+      attrs[key].allowNull = value.allowNull || false;
     } else {
       attrs[key] = {
         type: value,
-        allowNull: false
+        allowNull: false,
       };
     }
-  }
+  });
   attrs.id = {
     type: Sequelize.STRING(50),
     primaryKey: true,
-    unique: true
+    unique: true,
   };
   attrs.created_at = {
     type: Sequelize.BIGINT,
-    allowNull: false
+    allowNull: false,
   };
   attrs.updated_at = {
     type: Sequelize.BIGINT,
-    allowNull: false
+    allowNull: false,
   };
   attrs.version = {
     type: Sequelize.BIGINT,
-    allowNull: false
+    allowNull: false,
   };
 
-  return sequelize.define(name, attrs, {
+  return this.define(name, attrs, {
     tableName: name,
     freezeTableName: true,
     timestamps: false,
     hooks: {
-      beforeValidate: function (obj) {
-        let now = Date.now();
+      beforeValidate(obj) {
+        const now = Date.now();
         if (obj.isNewRecord) {
-          console.log('will create entity...' + obj);
+          console.log(`will create entity...${obj}`);
           if (!obj.id) {
             obj.id = generateId();
           }
@@ -72,29 +76,27 @@ function defineModel(name, attributes) {
         } else {
           console.log('will update entity...');
           obj.updated_at = now;
-          obj.version++;
+          obj.version += 1;
         }
-      }
-    }
+      },
+    },
   });
 }
 
-const db = {
-  Sequelize: Sequelize,
-  sequelize: sequelize,
-  defineModel: defineModel,
-  generateId: generateId,
-  sync: () => {
+Object.assign(custSequelize, {
+  generateId,
+  custDefine,
+  custSync() {
     // only allow create ddl in non-production environment:
-    if (process.env.NODE_ENV !== 'production') {
+    if (env !== 'production') {
       console.log('db.js - sync() called');
-      return sequelize.sync({
-        force: true
+      this.sync({
+        force: true,
       });
     } else {
       throw new Error('Cannot sync() when NODE_ENV is set to \'production\'.');
     }
   },
-};
+});
 
-module.exports = db;
+module.exports = custSequelize;

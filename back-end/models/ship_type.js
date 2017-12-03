@@ -1,17 +1,19 @@
-"use strict";
-const db = require('../db.js');
-
 module.exports = (sequelize, DataTypes) => {
-  const ship_type = db.defineModel("ship_type", {
-    ship_type: DataTypes.STRING,
+  const shipType = sequelize.custDefine('ship_type', {
+    ship_type: {
+      type: DataTypes.STRING,
+      unique: 'type',
+    },
     ship_subtype: {
       type: DataTypes.STRING,
-      unique: true,
+      unique: 'type',
     },
   });
 
-  ship_type.associate = (models) => {
-  }
+  shipType.associate = (models) => {
+    models.ship_type.hasMany(models.ship, {
+    });
+  };
 
-  return ship_type;
+  return shipType;
 };
