@@ -2,12 +2,12 @@ const models = require('../models');
 
 const { ship_type } = models;
 
-const getShipTypes = async (ctx, next) => {
+const getShipTypes = async (ctx) => {
   console.log('enter getShipTypes');
-  const shipType = await ship_type.findAll();
+  const result = await ship_type.findAll();
   const response = [];
   const arr = [];
-  shipType.forEach((item) => {
+  result.forEach((item) => {
     arr.push(item.ship_type);
   });
   const unique = [...new Set(arr)];
@@ -18,7 +18,7 @@ const getShipTypes = async (ctx, next) => {
       children: [],
     });
   });
-  shipType.forEach((item) => {
+  result.forEach((item) => {
     for (let i = 0; i < response.length; i += 1) {
       if (item.ship_type === response[i].value) {
         response[i].children.push({
@@ -30,7 +30,7 @@ const getShipTypes = async (ctx, next) => {
   });
   ctx.rest(response);
 };
-const setShipTypes = async (ctx, next) => {
+const setShipTypes = async (ctx) => {
   console.log('enter setShipTypes');
   const result = await ship_type.create({
     ship_type: ctx.request.body.shipType,

@@ -2,7 +2,7 @@ const models = require('../models');
 
 const { ship } = models;
 
-const setShip = async (ctx, next) => {
+const setShip = async (ctx) => {
   console.log('enter setShip');
   const result = await ship.create({
     code: ctx.request.body.code,
