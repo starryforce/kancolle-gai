@@ -1,0 +1,36 @@
+[{
+    "ship_type": "驱逐舰",
+    "ship_subtype": "一等驱逐舰第二代神风型"
+  },
+  {
+    "ship_type": "驱逐舰",
+    "ship_subtype": "一等驱逐舰睦月型"
+  }, {
+    "ship_type": "驱逐舰",
+    "ship_subtype": "一等驱逐舰吹雪型"
+  },
+  {
+    "ship_type": "驱逐舰",
+    "ship_subtype": "一等驱逐舰绫波型"
+  },
+  {
+    "ship_type": "驱逐舰",
+    "ship_subtype": "一等驱逐舰晓型"
+  },
+  {
+    "ship_type": "轻巡洋舰",
+    "ship_subtype": "二等巡洋舰天龙型"
+  },
+  {
+    "ship_type": "轻巡洋舰",
+    "ship_subtype": "二等巡洋舰球磨型"
+  },
+  {
+    "ship_type": "轻巡洋舰",
+    "ship_subtype": "二等巡洋舰长良型"
+  },
+  {
+    "ship_type": "轻巡洋舰",
+    "ship_subtype": "二等巡洋舰川内型"
+  }
+]

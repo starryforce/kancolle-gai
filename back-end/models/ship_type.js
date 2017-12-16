@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const shipType = sequelize.custDefine('ship_type', {
+  const model = sequelize.custDefine('ship_type', {
     ship_type: {
       type: DataTypes.STRING,
       unique: 'type',
@@ -10,10 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  shipType.associate = (models) => {
-    models.ship_type.hasMany(models.ship, {
-    });
+  model.associate = (models) => {
+    models.ship_type.hasMany(models.ship, {});
   };
-
-  return shipType;
+  return model;
 };

@@ -3,7 +3,6 @@
 const expect = require('chai').expect;
 
 describe('models/ship_type', function () {
-
   before(async function () {
     console.log('before');
     await require('../../models').sequelize.sync();

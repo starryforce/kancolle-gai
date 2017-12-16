@@ -89,8 +89,8 @@ Object.assign(custSequelize, {
   custSync() {
     // only allow create ddl in non-production environment:
     if (env !== 'production') {
-      console.log('db.js - sync() called');
-      this.sync({
+      console.log('custSequelize.js - custSync() called');
+      return this.sync({
         force: true,
       });
     } else {

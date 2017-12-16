@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const ship = sequelize.custDefine('ship', {
+  const model = sequelize.custDefine('ship', {
     code: {
       type: DataTypes.INTEGER,
       unique: true,
@@ -9,10 +9,11 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  ship.associate = (models) => {
-    models.ship.belongsTo(models.ship_type, {
-    });
+  model.associate = (models) => {
+    // 新增 ship_type_id 外键，为ship_type 表的 id
+    models.ship.belongsTo(models.ship_type, {});
+    models.ship.hasMany(models.ship_card, {});
   };
 
-  return ship;
+  return model;
 };

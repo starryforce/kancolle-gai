@@ -4,43 +4,23 @@ const { ship_type } = models;
 
 const getShipTypes = async (ctx) => {
   console.log('enter getShipTypes');
-  const result = await ship_type.findAll();
-  const response = [];
-  const arr = [];
-  result.forEach((item) => {
-    arr.push(item.ship_type);
+  const shipTypes = await ship_type.findAll({
+    attributes: ['ship_type', 'ship_subtype', 'id'],
   });
-  const unique = [...new Set(arr)];
-  unique.forEach((item) => {
-    response.push({
-      value: item,
-      label: item,
-      children: [],
-    });
-  });
-  result.forEach((item) => {
-    for (let i = 0; i < response.length; i += 1) {
-      if (item.ship_type === response[i].value) {
-        response[i].children.push({
-          value: item.id,
-          label: item.ship_subtype,
-        });
-      }
-    }
-  });
-  ctx.rest(response);
+  ctx.rest(shipTypes);
+  console.log(`got: ${JSON.stringify(shipTypes)}`);
 };
-const setShipTypes = async (ctx) => {
-  console.log('enter setShipTypes');
-  const result = await ship_type.create({
+const setShipType = async (ctx) => {
+  console.log('enter setShipType');
+  const newShipType = await ship_type.create({
     ship_type: ctx.request.body.shipType,
     ship_subtype: ctx.request.body.shipSubtype,
   });
-  ctx.rest(result);
-  console.log(`created: ${JSON.stringify(result)}`);
+  ctx.rest(newShipType);
+  console.log(`created: ${JSON.stringify(newShipType)}`);
 };
 
 module.exports = {
   'GET /v1/ship_types': getShipTypes,
-  'POST /v1/ship_types': setShipTypes,
+  'POST /v1/ship_types': setShipType,
 };

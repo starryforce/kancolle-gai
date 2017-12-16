@@ -1,12 +1,39 @@
 module.exports = (sequelize, DataTypes) => {
-  const shipCard = sequelize.custDefine('ship_card', {
+  const model = sequelize.custDefine('ship_card', {
     name: DataTypes.STRING,
-    ship_name: {
+    preview: {
       type: DataTypes.STRING,
+      defaultValue: '',
+    },
+    rate: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+    download_times: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+    download_url: {
+      type: DataTypes.STRING,
+      defaultValue: '',
+    },
+    creator: {
+      type: DataTypes.STRING,
+      defaultValue: '',
+    },
+    updater: {
+      type: DataTypes.STRING,
+      defaultValue: '',
+    },
+    source_url: {
+      type: DataTypes.STRING,
+      defaultValue: '',
     },
   });
 
-  shipCard.associate = () => {};
+  model.associate = (models) => {
+    models.ship_card.belongsTo(models.ship, {});
+  };
 
-  return shipCard;
+  return model;
 };
