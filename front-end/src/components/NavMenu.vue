@@ -1,6 +1,6 @@
 <template>
   <el-menu default-active="1">
-    <NavMenuSub :shipInfo="shipInfo" />
+    <NavMenuSub :ship-info="shipInfo" />
   </el-menu>
 </template>
 
