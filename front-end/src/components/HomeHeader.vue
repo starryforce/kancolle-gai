@@ -21,6 +21,7 @@
       </el-col>
       <el-col :span="2">
         <el-button
+          class="search_button"
           type="primary"
           icon="el-icon-search">成为绅士</el-button>
       </el-col>
@@ -33,12 +34,6 @@
           default-active="1">
           <el-menu-item index="1">
             <router-link to="/home">主页</router-link>
-          </el-menu-item>
-          <el-menu-item index="2">
-            <router-link to="/tutorial">教程</router-link>
-          </el-menu-item>
-          <el-menu-item index="3">
-            <router-link to="/tool">工具</router-link>
           </el-menu-item>
           <el-menu-item index="4">
             <router-link to="/console">控制台</router-link>
@@ -66,12 +61,32 @@ export default {
 
 <style lang="scss" scoped>
 .m-header {
+  $grey-gradient: linear-gradient(to bottom, #404040, #464646, #404040);
+  $light-blue-shadow: 0 0 10px #279293;
+  background: $grey-gradient;
   .content {
     width: 1160px;
     margin: 0 auto;
   }
+  .search_button {
+    background: linear-gradient(to bottom, #156766, #1aa4ab);
+  }
   .logo {
+    color: #fff;
     font-size: 2rem;
+  }
+  .nav {
+    background: inherit;
+    font-weight: bold;
+    a {
+      color: #fff;
+      font-size: 1.3rem;
+    }
+    li:hover {
+      background: $grey-gradient;
+      text-shadow: $light-blue-shadow, $light-blue-shadow, $light-blue-shadow,
+        $light-blue-shadow, $light-blue-shadow;
+    }
   }
 }
 </style>

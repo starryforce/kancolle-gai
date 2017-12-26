@@ -17,7 +17,14 @@ module.exports = {
         pathRewrite: {
           '^/v1': '/v1'
         }
-      }
+      },
+      '/static': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/static': '/static'
+        }
+      },
     },
 
     // Various Dev Server settings

@@ -15,7 +15,7 @@
             class="avatar-uploader"
             action="/v1/previews"
             :show-file-list="false"
-            :on-success="handleAvatarSuccess"
+            :on-success="uploadPreviewSuccess"
             :before-upload="beforeAvatarUpload">
             <img
               v-if="imageUrl"
@@ -50,7 +50,7 @@
             class="upload-demo"
             drag
             action="/v1/files"
-            :on-success="handleAvatarSuccess"
+            :on-success="uploadFileSuccess"
             :multiple="false">
             <i class="el-icon-upload" />
             <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
@@ -159,14 +159,12 @@ export default {
       const result = await this.$http.get('/v1/ship_types');
       this.shipTypeList = result.data;
     },
-    handleAvatarSuccess(res, file) {
-      debugger;
+    uploadPreviewSuccess(res, file) {
       this.imageUrl = URL.createObjectURL(file.raw);
-      if (res.path === 'previews') {
-        this.form.downloadUrl = `/controllers/upload-files/previews/${res.fileName}`;
-      } else if (res.path === 'files') {
-        this.form.preview = `/controllers/upload-files/files/${res.fileName}`;
-      }
+      this.form.preview = res.path;
+    },
+    uploadFileSuccess(res) {
+      this.form.downloadUrl = res.path;
     },
     beforeAvatarUpload(file) {
       const isJPG = file.type === 'image/jpeg';

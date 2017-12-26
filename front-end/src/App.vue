@@ -18,11 +18,14 @@ export default {
   },
 };
 </script>
-
 <style lang="scss" src="./styles/reboot.scss"></style>
+<style lang="scss" src="./styles/common.scss"></style>
 <style lang="scss">
 .g-main {
   width: 1160px;
-  margin: 0 auto;
+  margin: 20px auto;
+}
+body {
+  background-color: #f2f3f5;
 }
 </style>

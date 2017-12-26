@@ -1,11 +1,11 @@
 <template>
-  <el-container class="g-contanier">
+  <el-container>
     <el-aside>
       <el-menu>
         <el-menu-item index="1">
           <i class="el-icon-menu" />
           <span slot="title">
-            <router-link to="/console/shiptype">舰船类型管理</router-link>
+            <router-link to="/console/ship_type">舰船类型管理</router-link>
           </span>
         </el-menu-item>
         <el-menu-item index="2">
@@ -34,7 +34,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.g-contanier{
-  margin-top:15px;
-}
 </style>

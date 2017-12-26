@@ -40,7 +40,9 @@ ul {
   padding: 0;
 }
 
+
 /* 使用框模型简化像素计算 */
+
 html {
   box-sizing: border-box;
 }
@@ -57,29 +59,6 @@ ul {
   list-style-type: none;
 }
 
-a{
+a {
   text-decoration: none;
-}
-
-.el-container,
-.el-header,
-.el-footer,
-.el-main,
-.el-aside {
-  padding-left: 0;
-  padding-right: 0;
-}
-
-/* Temp */
-.el-header,
-.el-footer {
-  background-color: #b3c0d1;
-}
-
-.el-aside {
-  background-color: #d3dce6;
-}
-
-.el-main {
-  background-color: #e9eef3;
 }

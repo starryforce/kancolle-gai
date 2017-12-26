@@ -5,6 +5,8 @@ import ConsoleMain from '@/components/ConsoleMain';
 import ConsoleShipType from '@/components/ConsoleShipType';
 import ConsoleShip from '@/components/ConsoleShip';
 import ConsoleCard from '@/components/ConsoleCard';
+import ExploreCards from '@/components/ExploreCards';
+import CardDetail from '@/components/CardDetail';
 
 Vue.use(Router);
 
@@ -29,8 +31,8 @@ export default new Router({
         component: ConsoleShip,
       },
       {
-        path: 'shiptype',
-        name: 'shiptype',
+        path: 'ship_type',
+        name: 'shipType',
         component: ConsoleShipType,
       },
       {
@@ -39,6 +41,23 @@ export default new Router({
         component: ConsoleCard,
       },
     ],
+  },
+  {
+    path: '/explore/:sort',
+    name: 'explore',
+    component: ExploreCards,
+    props: true,
+  },
+  {
+    path: '/category',
+    name: 'category',
+    component: ExploreCards,
+  },
+  {
+    path: '/card_detail/:id',
+    name: 'cardDetail',
+    component: CardDetail,
+    props: true,
   },
   ],
 });
