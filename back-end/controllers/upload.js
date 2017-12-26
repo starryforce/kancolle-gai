@@ -62,6 +62,7 @@ function upload(ctx, options) {
       const _uploadFilePath = path.join(filePath, fileName);
       const saveTo = path.join(_uploadFilePath);
       result.fileName = fileName;
+      result.path = `/static/ship_cards/${options.fileType}/${fileName}`;
 
       // 文件保存到制定路径
       file.pipe(fs.createWriteStream(saveTo));
@@ -75,12 +76,6 @@ function upload(ctx, options) {
         resolve(result);
       });
     });
-
-    // 解析表单中其他字段信息
-    // busboy.on('field', function(fieldname, val, fieldnameTruncated, valTruncated, encoding, mimetype) {
-    //   console.log('表单字段数据 [' + fieldname + ']: value: ' + inspect(val));
-    //   result.formData[fieldname] = inspect(val);
-    // });
 
     // 解析结束事件
     busboy.on('finish', () => {
@@ -97,27 +92,25 @@ function upload(ctx, options) {
     req.pipe(busboy);
   });
 }
-const serverFilePath = path.join(__dirname, 'upload-files');
+const serverFilePath = path.join(__dirname, '../static/ship_cards');
 // 上传文件请求处理
 let result = {
   success: false,
 };
-const uploadPreview = async (ctx, next) => {
+const uploadPreview = async (ctx) => {
   // 上传文件事件
   result = await upload(ctx, {
-    fileType: 'previews', // common or album
+    fileType: 'previews',
     path: serverFilePath,
   });
-  result.path = 'previews';
   ctx.rest(result);
 };
-const uploadFile = async (ctx, next) => {
+const uploadFile = async (ctx) => {
   // 上传文件事件
   result = await upload(ctx, {
-    fileType: 'files', // common or album
+    fileType: 'files',
     path: serverFilePath,
   });
-  result.path = 'files';
   ctx.rest(result);
 };
 
