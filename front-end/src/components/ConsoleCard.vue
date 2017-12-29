@@ -2,7 +2,6 @@
   <el-container>
     <el-header>魔改管理</el-header>
     <el-main>
-
       <el-form
         ref="form"
         :model="form"
@@ -64,8 +63,14 @@
         <el-form-item label="画师名">
           <el-input v-model="form.creator" />
         </el-form-item>
+        <el-form-item label="上传者">
+          <el-input v-model="form.uploader" />
+        </el-form-item>
         <el-form-item label="素材图源">
           <el-input v-model="form.sourceUrl" />
+        </el-form-item>
+        <el-form-item label="Pixiv ID">
+          <el-input v-model="form.pixivId" />
         </el-form-item>
 
         <el-form-item>
@@ -90,9 +95,11 @@ export default {
         name: '',
         type: [],
         ship: '',
-        downloadUrl: '',
+        fileName: '',
         creator: '',
         sourceUrl: '',
+        uploader: '',
+        pixivId: '',
       },
       shipTypeList: [],
       ships: [],
@@ -142,13 +149,16 @@ export default {
   },
   methods: {
     async submit() {
+      debugger;
       await this.$http.post('/v1/ship_cards', {
         preview: this.form.preview,
         name: this.form.name,
         ship_id: this.form.ship,
-        download_url: this.form.downloadUrl,
+        file_name: this.form.fileName,
         creator: this.form.creator,
         source_url: this.form.sourceUrl,
+        uploader: this.form.uploader,
+        pixiv_id: this.form.pixivId,
       });
     },
     async getShipsByType(type) {
@@ -164,7 +174,7 @@ export default {
       this.form.preview = res.path;
     },
     uploadFileSuccess(res) {
-      this.form.downloadUrl = res.path;
+      this.form.fileName = res.fileName;
     },
     beforeAvatarUpload(file) {
       const isJPG = file.type === 'image/jpeg';
