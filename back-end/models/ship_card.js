@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
-    download_url: {
+    file_name: {
       type: DataTypes.STRING,
       defaultValue: '',
     },
@@ -21,11 +21,15 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       defaultValue: '',
     },
-    updater: {
+    source_url: {
       type: DataTypes.STRING,
       defaultValue: '',
     },
-    source_url: {
+    pixiv_id: {
+      type: DataTypes.STRING,
+      defaultValue: '',
+    },
+    uploader: {
       type: DataTypes.STRING,
       defaultValue: '',
     },

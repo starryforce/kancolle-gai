@@ -2,6 +2,8 @@ const models = require('../models');
 
 const {
   ship_card,
+  ship,
+  ship_type,
 } = models;
 
 const setShipCard = async (ctx) => {
@@ -10,9 +12,11 @@ const setShipCard = async (ctx) => {
     name: ctx.request.body.name,
     preview: ctx.request.body.preview,
     ship_id: ctx.request.body.ship_id,
-    download_url: ctx.request.body.download_url,
+    file_name: ctx.request.body.file_name,
     creator: ctx.request.body.creator,
     source_url: ctx.request.body.source_url,
+    pixiv_id: ctx.request.body.pixiv_id,
+    uploader: ctx.request.body.uploader,
   });
   ctx.rest(result);
   console.log(`created: ${JSON.stringify(result)}`);
@@ -38,7 +42,22 @@ const getShipCards = async (ctx) => {
 
 const getShipCard = async (ctx) => {
   console.log('enter getShipCard');
-  const result = await ship_card.findById(ctx.params.id);
+  const result = await ship_card.findById(ctx.params.id, {
+    attributes: {
+      exclude: ['updated_at', 'version', 'ship_id', 'id', 'rate'],
+    },
+    include: [{
+      model: ship,
+      attributes: ['name'],
+      include: [{
+        model: ship_type,
+        attributes: ['ship_type', 'ship_subtype'],
+      }],
+    }],
+  });
+  result.dataValues.shipName = result.ship.name;
+  result.dataValues.shipType = result.ship.ship_type.ship_type;
+  result.dataValues.shipSubtype = result.ship.ship_type.ship_subtype;
   ctx.rest(result);
 };
 
