@@ -25,16 +25,47 @@ const setShipCard = async (ctx) => {
 const getShipCards = async (ctx) => {
   console.log('enter getShipCards');
   let result = {};
-  if (ctx.request.query.sortMode === 'uploadTime') {
-    result = await ship_card.findAll({
+  if (ctx.request.query.type === 'detail') {
+    const params = {};
+
+    // 必须存在排序属性依据 order 才有意义
+    if (ctx.request.query.sortBy) {
+      const sort = [];
+      switch (ctx.request.query.sortBy) {
+        case 'uploadTime':
+          sort[0] = 'created_at';
+          break;
+        case 'rate':
+          sort[0] = 'rate';
+          break;
+        case 'downloadTimes':
+          sort[0] = 'download_times';
+          break;
+        default:
+          sort[0] = 'download_times';
+      }
+      if (ctx.request.query.order) {
+        sort[1] = ctx.request.query.order;
+      } else {
+        sort[1] = 'DESC';
+      }
+      Object.assign(params, {
+        order: [sort],
+      });
+    }
+    if (ctx.request.query.values) {
+      Object.assign(params, {
+        attrubutes: ctx.request.query.values,
+      });
+    }
+    Object.assign(params, {
       limit: Number(ctx.request.query.limit),
       offset: Number(ctx.request.query.offset),
-      order: [
-        ['created_at', ctx.request.query.order],
-      ],
     });
+    result = await ship_card.findAll(params);
   }
-  if (ctx.request.query.type === 'count') {
+
+  if (ctx.request.query.type === 'quantity') {
     result = await ship_card.count();
   }
   ctx.rest(result);

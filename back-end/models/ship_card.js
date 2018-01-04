@@ -1,6 +1,9 @@
 module.exports = (sequelize, DataTypes) => {
   const model = sequelize.custDefine('ship_card', {
-    name: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      defaultValue: '',
+    },
     preview: {
       type: DataTypes.STRING,
       defaultValue: '',

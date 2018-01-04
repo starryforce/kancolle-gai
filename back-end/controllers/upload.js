@@ -16,6 +16,7 @@ function mkdirsSync(dirname) {
     fs.mkdirSync(dirname);
     return true;
   }
+  return null;
 }
 
 /**
@@ -37,7 +38,6 @@ function getSuffixName(fileName) {
 function upload(ctx, options) {
   const {
     req,
-    res,
   } = ctx;
   const busboy = new Busboy({
     headers: req.headers,
@@ -58,8 +58,8 @@ function upload(ctx, options) {
     // 解析请求文件事件
     busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
       const fileName = `${Math.random().toString(16).substr(2)}.${getSuffixName(filename)}`;
-      const _uploadFilePath = path.join(filePath, fileName);
-      const saveTo = path.join(_uploadFilePath);
+      const uploadFilePath = path.join(filePath, fileName);
+      const saveTo = path.join(uploadFilePath);
       result.fileName = fileName;
       result.path = `/static/ship_cards/${options.fileType}/${fileName}`;
 
@@ -83,7 +83,7 @@ function upload(ctx, options) {
     });
 
     // 解析错误事件
-    busboy.on('error', (err) => {
+    busboy.on('error', () => {
       console.log('文件上传出错');
       reject(result);
     });
@@ -97,7 +97,6 @@ let result = {
   success: false,
 };
 const uploadPreview = async (ctx) => {
-  // 上传文件事件
   result = await upload(ctx, {
     fileType: 'previews',
     path: serverFilePath,
@@ -105,10 +104,18 @@ const uploadPreview = async (ctx) => {
   ctx.rest(result);
 };
 const uploadFile = async (ctx) => {
-  // 上传文件事件
   result = await upload(ctx, {
     fileType: 'files',
     path: serverFilePath,
+  });
+  ctx.rest(result);
+};
+
+const uploadAvatar = async (ctx) => {
+  // 上传文件事件
+  result = await upload(ctx, {
+    fileType: 'avatars',
+    path: path.join(__dirname, '../static/users'),
   });
   ctx.rest(result);
 };
@@ -117,4 +124,5 @@ const uploadFile = async (ctx) => {
 module.exports = {
   'POST /v1/previews': uploadPreview,
   'POST /v1/files': uploadFile,
+  'POST /v1/avatars': uploadAvatar,
 };
