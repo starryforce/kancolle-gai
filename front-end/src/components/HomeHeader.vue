@@ -15,7 +15,7 @@
         :span="5"
         :offset="1">
         <el-input
-          v-model="input"
+          v-model="keyword"
           placeholder="开始翻小姐姐的衣橱"
           clearable />
       </el-col>
@@ -26,18 +26,17 @@
           icon="el-icon-search">成为绅士</el-button>
       </el-col>
       <el-col
-        :span="7"
+        :span="10"
         :offset="2">
         <el-menu
           class="nav"
           mode="horizontal"
-          default-active="1">
-          <el-menu-item index="1">
-            <router-link to="/home">主页</router-link>
-          </el-menu-item>
-          <el-menu-item index="4">
-            <router-link to="/console">控制台</router-link>
-          </el-menu-item>
+          :default-active="activeRouter"
+          router>
+          <el-menu-item index="/home">主页</el-menu-item>
+          <el-menu-item index="/console">控制台</el-menu-item>
+          <el-menu-item index="/login">登录</el-menu-item>
+          <el-menu-item index="/register">注册</el-menu-item>
         </el-menu>
       </el-col>
     </el-row>
@@ -48,12 +47,10 @@
 
 export default {
   name: 'HomeHeader',
-  components: {
-
-  },
   data() {
     return {
-      input: '',
+      keyword: '',
+      activeRouter: '/home',
     };
   },
 };
@@ -62,7 +59,7 @@ export default {
 <style lang="scss" scoped>
 .m-header {
   $grey-gradient: linear-gradient(to bottom, #404040, #464646, #404040);
-  $light-blue-shadow: 0 0 10px #279293;
+  $light-blue-shadow: 0 0 15px #279293;
   background: $grey-gradient;
   .content {
     width: 1160px;
@@ -78,11 +75,12 @@ export default {
   .nav {
     background: inherit;
     font-weight: bold;
-    a {
+    .el-menu-item {
+      background: $grey-gradient;
       color: #fff;
       font-size: 1.3rem;
     }
-    li:hover {
+    .el-menu-item:hover {
       background: $grey-gradient;
       text-shadow: $light-blue-shadow, $light-blue-shadow, $light-blue-shadow,
         $light-blue-shadow, $light-blue-shadow;

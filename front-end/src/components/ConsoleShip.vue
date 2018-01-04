@@ -3,24 +3,25 @@
     <el-header>舰船管理</el-header>
     <el-main>
       <el-form
-        ref="form"
-        :model="form"
+        ref="ship"
+        :model="ship"
+        :rules="shipRules"
         label-width="80px">
-        <el-form-item label="图鉴ID">
+        <el-form-item label="图鉴ID" prop="code">
           <el-input
-            v-model="form.code"
+            v-model.number="ship.code"
             placeholder="请输入图鉴ID" />
         </el-form-item>
-        <el-form-item label="舰名">
+        <el-form-item label="舰名" prop="name">
           <el-input
-            v-model="form.name"
+            v-model.trim="ship.name"
             placeholder="请输入舰名" />
         </el-form-item>
         <el-form-item label="类型">
           <el-cascader
             expand-trigger="hover"
             :options="options"
-            v-model="form.type"
+            v-model="ship.type"
             @change="handleChange" />
         </el-form-item>
         <el-form-item>
@@ -41,10 +42,14 @@ export default {
 
   data() {
     return {
-      form: {
+      ship: {
         code: '',
         name: '',
         type: [],
+      },
+      shipRules: {
+        code: [{ required: true, message: '请输入图鉴ID', trigger: 'blur' }],
+        name: [{ required: true, message: '请输入舰船名称', trigger: 'blur' }],
       },
       shipTypeList: [],
     };
@@ -83,9 +88,9 @@ export default {
   methods: {
     async submit() {
       await this.$http.post('/v1/ships', {
-        code: Number(this.form.code),
-        name: this.form.name,
-        ship_type_id: this.form.type[1],
+        code: Number(this.ship.code),
+        name: this.ship.name,
+        ship_type_id: this.ship.type[1],
       });
     },
     handleChange(value) {

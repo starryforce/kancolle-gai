@@ -4,8 +4,8 @@
       <img :src="preview" :alt="name">
       <p>{{name}}</p>
       <p>
-        <span>下载:NA次</span>
-        <span>评分:NA</span>
+        <span>下载:{{download_times}}</span>
+        <span>评分:{{rate}}</span>
       </p>
     </router-link>
   </section>
@@ -26,6 +26,12 @@ export default {
     preview: {
       type: String,
     },
+    download_times: {
+      type: Number,
+    },
+    rate: {
+      type: Number,
+    },
   },
   data() {
     return {
@@ -40,8 +46,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .m-card_thumbnail {
-  float: left;
-  margin: 0 20px 20px 0; // 原始大小 218x300
   font-size: 0.5rem;
   img {
     height: 240px;

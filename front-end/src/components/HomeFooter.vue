@@ -15,12 +15,16 @@ export default {
 
 <style lang="scss" scoped>
 .m-footer {
+  background: linear-gradient(to bottom, #404040, #464646, #404040);
   .content {
+    position: relative;
     width: 1160px;
     margin: 0 auto;
   }
   .creator {
-    float: right;
+    position: absolute;
+    right: 25px;
+    top:10px;
   }
 }
 </style>

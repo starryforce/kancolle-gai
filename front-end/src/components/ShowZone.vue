@@ -10,7 +10,7 @@
     </el-row>
     <main>
       <div class="m-cards clearfix">
-        <CardThumbnail v-for="item in shipCards" :key="item.id" v-bind="item" />
+        <CardThumbnail class="item" v-for="item in shipCards" :key="item.id" v-bind="item" />
       </div>
     </main>
   </section>
@@ -19,12 +19,14 @@
 
 <script>
 import CardThumbnail from './CardThumbnail';
+import getShipCardsMixin from '../mixin/getShipCards';
 
 export default {
   name: 'ShowZone',
   components: {
     CardThumbnail,
   },
+  mixins: [getShipCardsMixin],
   props: {
     sort: String,
   },
@@ -38,25 +40,24 @@ export default {
       return `/explore/${this.sort}`;
     },
   },
-  mounted() {
-    this.getShipCards();
+  async mounted() {
+    this.getShipCards({
+      sortBy: this.sort,
+
+    }).then((datas) => {
+      this.shipCards = datas;
+    });
   },
   methods: {
-    async getShipCards() {
-      const response = await this.$http.get('/v1/ship_cards', {
-        params: {
-          sortMode: 'uploadTime',
-          offset: 0,
-          limit: 8,
-          order: 'DESC',
-        },
-      });
-      this.shipCards = response.data;
-    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-
+.m-cards {
+  .item {
+    float: left;
+    margin: 0 20px 20px 0; // 原始大小 218x300
+  }
+}
 </style>

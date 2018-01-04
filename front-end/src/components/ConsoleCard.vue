@@ -3,11 +3,11 @@
     <el-header>魔改管理</el-header>
     <el-main>
       <el-form
-        ref="form"
-        :model="form"
+        ref="card"
+        :model="card"
         label-width="80px">
         <el-form-item label="名称">
-          <el-input v-model="form.name" />
+          <el-input v-model="card.name" />
         </el-form-item>
         <el-form-item label="预览图">
           <el-upload
@@ -29,12 +29,12 @@
           <el-cascader
             expand-trigger="hover"
             :options="shipTypes"
-            v-model="form.type"
-            @change="getShipsByType(form.type[1])" />
+            v-model="card.type"
+            @change="getShipsByType(card.type[1])" />
         </el-form-item>
         <el-form-item label="舰名">
           <el-select
-            v-model="form.ship"
+            v-model="card.shipName"
             clearable
             placeholder="请选择">
             <el-option
@@ -61,18 +61,17 @@
           </el-upload>
         </el-form-item>
         <el-form-item label="画师名">
-          <el-input v-model="form.creator" />
+          <el-input v-model="card.creator" />
         </el-form-item>
         <el-form-item label="上传者">
-          <el-input v-model="form.uploader" />
+          <el-input v-model="card.uploader" />
         </el-form-item>
         <el-form-item label="素材图源">
-          <el-input v-model="form.sourceUrl" />
+          <el-input v-model="card.sourceUrl" />
         </el-form-item>
         <el-form-item label="Pixiv ID">
-          <el-input v-model="form.pixivId" />
+          <el-input v-model="card.pixivId" />
         </el-form-item>
-
         <el-form-item>
           <el-button
             type="primary"
@@ -90,11 +89,11 @@ export default {
   },
   data() {
     return {
-      form: {
+      card: {
         preview: '',
         name: '',
         type: [],
-        ship: '',
+        shipName: '',
         fileName: '',
         creator: '',
         sourceUrl: '',
@@ -149,16 +148,15 @@ export default {
   },
   methods: {
     async submit() {
-      debugger;
       await this.$http.post('/v1/ship_cards', {
-        preview: this.form.preview,
-        name: this.form.name,
-        ship_id: this.form.ship,
-        file_name: this.form.fileName,
-        creator: this.form.creator,
-        source_url: this.form.sourceUrl,
-        uploader: this.form.uploader,
-        pixiv_id: this.form.pixivId,
+        preview: this.card.preview,
+        name: this.card.name,
+        ship_id: this.card.shipName,
+        file_name: this.card.fileName,
+        creator: this.card.creator,
+        source_url: this.card.sourceUrl,
+        uploader: this.card.uploader,
+        pixiv_id: this.card.pixivId,
       });
     },
     async getShipsByType(type) {
@@ -171,10 +169,10 @@ export default {
     },
     uploadPreviewSuccess(res, file) {
       this.imageUrl = URL.createObjectURL(file.raw);
-      this.form.preview = res.path;
+      this.card.preview = res.path;
     },
     uploadFileSuccess(res) {
-      this.form.fileName = res.fileName;
+      this.card.fileName = res.fileName;
     },
     beforeAvatarUpload(file) {
       const isJPG = file.type === 'image/jpeg';

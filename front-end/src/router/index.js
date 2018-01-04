@@ -7,10 +7,13 @@ import ConsoleShip from '@/components/ConsoleShip';
 import ConsoleCard from '@/components/ConsoleCard';
 import ExploreCards from '@/components/ExploreCards';
 import CardDetail from '@/components/CardDetail';
+import UserLogin from '@/components/UserLogin';
+import UserRegister from '@/components/UserRegister';
 
 Vue.use(Router);
 
 export default new Router({
+  mode: 'history',
   routes: [{
     path: '/',
     component: HomeMain,
@@ -19,6 +22,16 @@ export default new Router({
     path: '/home',
     name: 'home',
     component: HomeMain,
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: UserLogin,
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: UserRegister,
   },
   {
     path: '/console',

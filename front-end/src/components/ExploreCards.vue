@@ -32,12 +32,14 @@
 
 <script>
 import CardThumbnailExplore from './CardThumbnailExplore';
+import getShipCardsMixin from '../mixin/getShipCards';
 
 export default {
   name: 'ExploreCards',
   components: {
     CardThumbnailExplore,
   },
+  mixins: [getShipCardsMixin],
   props: {
     sort: String,
   },
@@ -51,49 +53,49 @@ export default {
   },
 
   mounted() {
-    this.getTotal();
+    this.getTotal().then((response) => {
+      this.cardTotal = response;
+    });
     this.getShipCards({
-      sortMode: 'uploadTime',
+      type: 'detail',
+      sortBy: 'uploadTime',
       limit: this.pageSize,
       offset: this.pageSize * (this.currentPage - 1),
       order: 'DESC',
+    }).then((datas) => {
+      this.shipCards = datas;
     });
   },
   methods: {
     async getTotal() {
       const response = await this.$http.get('/v1/ship_cards', {
         params: {
-          type: 'count',
+          type: 'quantity',
         },
       });
-      this.cardTotal = response.data;
-    },
-    async getShipCards(params) {
-      const response = await this.$http.get('/v1/ship_cards', {
-        params,
-      });
-      this.shipCards = response.data;
+      return response.data;
     },
     handleSizeChange(pageSize) {
       this.pageSize = pageSize;
       this.getShipCards({
-        sortMode: 'uploadTime',
+        sortBy: 'uploadTime',
         limit: pageSize,
         offset: pageSize * (this.currentPage - 1),
-        order: 'DESC',
+      }).then((datas) => {
+        this.shipCards = datas;
       });
     },
     handleCurrentChange(currentPage) {
       this.currentPage = currentPage;
       this.getShipCards({
-        sortMode: 'uploadTime',
+        sortBy: 'uploadTime',
         limit: this.pageSize,
         offset: this.pageSize * (currentPage - 1),
-        order: 'DESC',
+      }).then((datas) => {
+        this.shipCards = datas;
       });
     },
   },
-
 };
 </script>
 
