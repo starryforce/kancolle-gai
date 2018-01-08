@@ -1,11 +1,15 @@
 <template>
-  <el-menu default-active="1">
-    <NavMenuSub :ship-info="shipInfo" />
-  </el-menu>
+  <div>
+    <el-switch v-model="isCollapse" active-text="展开" inactive-text="折叠">
+    </el-switch>
+    <el-menu class="m-menu" unique-opened :collapse="!isCollapse">
+      <NavMenuSub v-for="item of menuInfo" :menu-info="item" :key="item.type" />
+    </el-menu>
+  </div>
 </template>
 
+
 <script>
-import shipInfo from '@/json/newShipInfo.json';
 import NavMenuSub from './NavMenuSub';
 
 export default {
@@ -15,14 +19,30 @@ export default {
   },
   data() {
     return {
-      shipInfo,
+      isCollapse: false,
+      menuInfo: [],
     };
+  },
+  mounted() {
+    this.getMenu();
+  },
+  methods: {
+    async getMenu() {
+      const result = await this.$http.get('/v1/ship_menu');
+      this.menuInfo = result.data;
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-
+.el-switch {
+  margin-bottom: 20px;
+}
+.m-menu:not(.el-menu--collapse) {
+  width: 400px;
+  min-height: 400px;
+}
 </style>
 
 

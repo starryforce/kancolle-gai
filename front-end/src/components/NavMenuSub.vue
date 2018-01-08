@@ -1,36 +1,25 @@
 <template>
-  <div>
-    <template v-if="shipInfo && shipInfo[0].type">
-      <el-submenu
-        v-for="(item) of shipInfo"
-        :key="item.type"
-        :index="item.type">
-        <template slot="title">
-          <i class="el-icon-setting" />
-          <span>{{ item.type }}</span>
-        </template>
-        <NavMenuSub
-          v-if="item.subs && item.subs.length>0"
-          :ship-info="item.subs" />
-      </el-submenu>
+  <el-submenu v-if="menuInfo.type" :key="menuInfo.type" :index="menuInfo.type">
+    <template slot="title">
+      <i class="el-icon-setting" />
+      <span>{{ menuInfo.type }}</span>
     </template>
-    <template v-if="shipInfo && shipInfo[0].name">
-      <el-menu-item
-        v-for="(item) of shipInfo"
-        :key="item.name"
-        :index="item.name">
-        {{ item.name }}
-      </el-menu-item>
+    <template v-for="item of menuInfo.subs">
+      <NavMenuSub :menu-info="item" :key="item.type" :index="item.type" />
     </template>
-  </div>
+  </el-submenu>
+  <el-menu-item v-else :key="menuInfo.name" :index="menuInfo.name">
+    {{ menuInfo.name }}
+  </el-menu-item>
 </template>
+
 
 <script>
 export default {
   name: 'NavMenuSub',
   props: {
-    shipInfo: {
-      type: Array,
+    menuInfo: {
+      type: Object,
     },
   },
 };

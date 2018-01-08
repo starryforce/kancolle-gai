@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-aside width="250px">
+    <el-aside width="auto">
       <NavMenu />
     </el-aside>
     <el-main class="m-home">
@@ -60,6 +60,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.el-aside{
+  overflow: visible;
+}
 .m-home {
   .top {
     display: flex;

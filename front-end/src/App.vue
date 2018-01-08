@@ -23,10 +23,11 @@ export default {
 <style lang="scss">
 .g-main {
   width: 1160px;
+  min-height: 827px;
   margin: 20px auto;
 }
 body {
-  min-width:1160px;
-  background-color: #f2f3f5;
+  min-width: 1160px;
+  background-image: url(./assets/brickwall.png);
 }
 </style>
