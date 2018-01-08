@@ -19,7 +19,7 @@ const testConfig = {
 const productionConfig = {
   username: 'www',
   password: 'www',
-  database: 'production',
+  database: 'kancolle',
   host: '127.0.0.1',
   dialect: 'mysql',
   port: 3306,

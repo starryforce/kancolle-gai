@@ -1,36 +1,205 @@
 [{
-    "ship_type": "驱逐舰",
-    "ship_subtype": "一等驱逐舰第二代神风型"
-  },
-  {
-    "ship_type": "驱逐舰",
-    "ship_subtype": "一等驱逐舰睦月型"
-  }, {
-    "ship_type": "驱逐舰",
-    "ship_subtype": "一等驱逐舰吹雪型"
-  },
-  {
-    "ship_type": "驱逐舰",
-    "ship_subtype": "一等驱逐舰绫波型"
-  },
-  {
-    "ship_type": "驱逐舰",
-    "ship_subtype": "一等驱逐舰晓型"
-  },
-  {
-    "ship_type": "轻巡洋舰",
-    "ship_subtype": "二等巡洋舰天龙型"
-  },
-  {
-    "ship_type": "轻巡洋舰",
-    "ship_subtype": "二等巡洋舰球磨型"
-  },
-  {
-    "ship_type": "轻巡洋舰",
-    "ship_subtype": "二等巡洋舰长良型"
-  },
-  {
-    "ship_type": "轻巡洋舰",
-    "ship_subtype": "二等巡洋舰川内型"
-  }
-]
+  "ship_type": "驱逐舰（DD）",
+  "ship_subtype": "一等驱逐舰第二代神风型"
+}, {
+  "ship_type": "驱逐舰（DD）",
+  "ship_subtype": "一等驱逐舰睦月型"
+}, {
+  "ship_type": "驱逐舰（DD）",
+  "ship_subtype": "一等驱逐舰吹雪型"
+}, {
+  "ship_type": "驱逐舰（DD）",
+  "ship_subtype": "一等驱逐舰绫波型"
+}, {
+  "ship_type": "驱逐舰（DD）",
+  "ship_subtype": "一等驱逐舰晓型"
+}, {
+  "ship_type": "驱逐舰（DD）",
+  "ship_subtype": "一等驱逐舰初春型"
+}, {
+  "ship_type": "驱逐舰（DD）",
+  "ship_subtype": "一等驱逐舰白露型"
+}, {
+  "ship_type": "驱逐舰（DD）",
+  "ship_subtype": "一等驱逐舰朝潮型"
+}, {
+  "ship_type": "驱逐舰（DD）",
+  "ship_subtype": "一等驱逐舰阳炎型"
+}, {
+  "ship_type": "驱逐舰（DD）",
+  "ship_subtype": "一等驱逐舰夕云型"
+}, {
+  "ship_type": "驱逐舰（DD）",
+  "ship_subtype": "一等驱逐舰秋月型"
+}, {
+  "ship_type": "驱逐舰（DD）",
+  "ship_subtype": "一等驱逐舰岛风型"
+}, {
+  "ship_type": "驱逐舰（DD）",
+  "ship_subtype": "Zerstörer1934级"
+}, {
+  "ship_type": "驱逐舰（DD）",
+  "ship_subtype": "西北风级"
+}, {
+  "ship_type": "轻巡洋舰（CL）/重雷装巡洋舰（CLT）",
+  "ship_subtype": "二等巡洋舰天龙型"
+}, {
+  "ship_type": "轻巡洋舰（CL）/重雷装巡洋舰（CLT）",
+  "ship_subtype": "二等巡洋舰球磨型"
+}, {
+  "ship_type": "轻巡洋舰（CL）/重雷装巡洋舰（CLT）",
+  "ship_subtype": "二等巡洋舰长良型"
+}, {
+  "ship_type": "轻巡洋舰（CL）/重雷装巡洋舰（CLT）",
+  "ship_subtype": "二等巡洋舰川内型"
+}, {
+  "ship_type": "轻巡洋舰（CL）/重雷装巡洋舰（CLT）",
+  "ship_subtype": "二等巡洋舰夕张型"
+}, {
+  "ship_type": "轻巡洋舰（CL）/重雷装巡洋舰（CLT）",
+  "ship_subtype": "二等巡洋舰阿贺野型"
+}, {
+  "ship_type": "轻巡洋舰（CL）/重雷装巡洋舰（CLT）",
+  "ship_subtype": "二等巡洋舰大淀型"
+}, {
+  "ship_type": "重巡洋舰（CA）/航空巡洋舰（CAV）",
+  "ship_subtype": "二等巡洋舰最上型"
+}, {
+  "ship_type": "重巡洋舰（CA）/航空巡洋舰（CAV）",
+  "ship_subtype": "二等巡洋舰利根型"
+}, {
+  "ship_type": "重巡洋舰（CA）/航空巡洋舰（CAV）",
+  "ship_subtype": "一等巡洋舰古鹰型"
+}, {
+  "ship_type": "重巡洋舰（CA）/航空巡洋舰（CAV）",
+  "ship_subtype": "一等巡洋舰青叶型"
+}, {
+  "ship_type": "重巡洋舰（CA）/航空巡洋舰（CAV）",
+  "ship_subtype": "一等巡洋舰妙高型"
+}, {
+  "ship_type": "重巡洋舰（CA）/航空巡洋舰（CAV）",
+  "ship_subtype": "一等巡洋舰高雄型"
+}, {
+  "ship_type": "重巡洋舰（CA）/航空巡洋舰（CAV）",
+  "ship_subtype": "希佩尔海军上将级"
+}, {
+  "ship_type": "重巡洋舰（CA）/航空巡洋舰（CAV）",
+  "ship_subtype": "扎拉级"
+}, {
+  "ship_type": "高速战舰（BB）/巡洋战舰（BC）",
+  "ship_subtype": "甘古特级（低速）"
+}, {
+  "ship_type": "高速战舰（BB）/巡洋战舰（BC）",
+  "ship_subtype": "金刚型"
+}, {
+  "ship_type": "高速战舰（BB）/巡洋战舰（BC）",
+  "ship_subtype": "维内托级"
+}, {
+  "ship_type": "高速战舰（BB）/巡洋战舰（BC）",
+  "ship_subtype": "黎塞留级"
+}, {
+  "ship_type": "高速战舰（BB）/巡洋战舰（BC）",
+  "ship_subtype": "俾斯麦级"
+}, {
+  "ship_type": "高速战舰（BB）/巡洋战舰（BC）",
+  "ship_subtype": "衣阿华级"
+}, {
+  "ship_type": "战列舰（BB）/航空战舰（BBV）",
+  "ship_subtype": "扶桑型"
+}, {
+  "ship_type": "战列舰（BB）/航空战舰（BBV）",
+  "ship_subtype": "伊丽莎白女王级"
+}, {
+  "ship_type": "战列舰（BB）/航空战舰（BBV）",
+  "ship_subtype": "伊势型"
+}, {
+  "ship_type": "战列舰（BB）/航空战舰（BBV）",
+  "ship_subtype": "长门型"
+}, {
+  "ship_type": "战列舰（BB）/航空战舰（BBV）",
+  "ship_subtype": "大和型"
+}, {
+  "ship_type": "轻空母（CVL）",
+  "ship_subtype": "单造舰"
+}, {
+  "ship_type": "轻空母（CVL）",
+  "ship_subtype": "祥凤型"
+}, {
+  "ship_type": "轻空母（CVL）",
+  "ship_subtype": "千岁型"
+}, {
+  "ship_type": "轻空母（CVL）",
+  "ship_subtype": "特设舰 飞鹰型"
+}, {
+  "ship_type": "轻空母（CVL）",
+  "ship_subtype": "货船 新田丸型→特设舰 大鹰型"
+}, {
+  "ship_type": "正规空母（CV）/装甲空母（CVA）",
+  "ship_subtype": "天城型"
+}, {
+  "ship_type": "正规空母（CV）/装甲空母（CVA）",
+  "ship_subtype": "日本单造舰"
+}, {
+  "ship_type": "正规空母（CV）/装甲空母（CVA）",
+  "ship_subtype": "翔鹤型"
+}, {
+  "ship_type": "正规空母（CV）/装甲空母（CVA）",
+  "ship_subtype": "云龙型"
+}, {
+  "ship_type": "正规空母（CV）/装甲空母（CVA）",
+  "ship_subtype": "齐柏林伯爵级"
+}, {
+  "ship_type": "正规空母（CV）/装甲空母（CVA）",
+  "ship_subtype": "鹫座级"
+}, {
+  "ship_type": "正规空母（CV）/装甲空母（CVA）",
+  "ship_subtype": "列克星敦级"
+}, {
+  "ship_type": "正规空母（CV）/装甲空母（CVA）",
+  "ship_subtype": "皇家方舟级"
+}, {
+  "ship_type": "潜水艇（SS）/潜水母舰(AS)",
+  "ship_subtype": "一等潜水舰"
+}, {
+  "ship_type": "潜水艇（SS）/潜水母舰(AS)",
+  "ship_subtype": "二等潜水舰"
+}, {
+  "ship_type": "潜水艇（SS）/潜水母舰(AS)",
+  "ship_subtype": "陆军三式潜航输送艇"
+}, {
+  "ship_type": "水上飞机母舰（AV）",
+  "ship_subtype": "千岁型"
+}, {
+  "ship_type": "水上飞机母舰（AV）",
+  "ship_subtype": "秋津洲型"
+}, {
+  "ship_type": "水上飞机母舰（AV）",
+  "ship_subtype": "瑞穗型"
+}, {
+  "ship_type": "水上飞机母舰（AV）",
+  "ship_subtype": "塔斯特司令官型"
+}, {
+  "ship_type": "海防舰（DE）",
+  "ship_subtype": "占守型"
+}, {
+  "ship_type": "海防舰（DE）",
+  "ship_subtype": "择捉型"
+}, {
+  "ship_type": "特务舰",
+  "ship_subtype": "工作舰 明石型"
+}, {
+  "ship_type": "特务舰",
+  "ship_subtype": "神威型"
+}, {
+  "ship_type": "特务舰",
+  "ship_subtype": "给油舰 风早型"
+}, {
+  "ship_type": "其他舰船",
+  "ship_subtype": "陆军特种船丙型"
+}, {
+  "ship_type": "其他舰船",
+  "ship_subtype": "练习巡洋舰 香取型"
+}, {
+  "ship_type": "其他舰船",
+  "ship_subtype": "潜水母舰 大鲸型"
+}]
