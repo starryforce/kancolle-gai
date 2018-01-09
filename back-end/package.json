@@ -11,11 +11,11 @@
   "license": "ISC",
   "dependencies": {
     "busboy": "^0.2.14",
+    "ioredis": "^3.2.2",
     "koa": "^2.4.1",
     "koa-bodyparser": "^4.2.0",
-    "koa-mysql-session": "^0.0.2",
     "koa-router": "^7.3.0",
-    "koa-session-minimal": "^3.0.4",
+    "koa-session2": "^2.2.5",
     "mime": "^2.0.3",
     "mysql2": "^1.5.1",
     "mz": "^2.7.0",

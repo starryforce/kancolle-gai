@@ -1,6 +1,8 @@
 const isProduction = process.env.NODE_ENV === 'production';
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
+const session = require("koa-session2");
+const Store = require("./config/session-store.js");
 const controller = require('./controller');
 const staticFiles = require('./middlewares/static-files');
 const templating = require('./middlewares/templating');
@@ -20,6 +22,11 @@ if (!isProduction) {
 }
 // 请求头解析
 app.use(bodyParser());
+app.use(session({
+  key: "sessionId",
+  store: new Store(),
+  maxAge: 200000,
+}));
 // 模板
 app.use(templating('views', {
   noCache: !isProduction,

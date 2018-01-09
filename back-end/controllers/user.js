@@ -31,6 +31,12 @@ const validateUser = async (ctx) => {
   if (sha1.digest('hex') === userInfo.password) {
     console.log(userInfo);
   }
+  if (ctx.session.view === undefined) { // 统计访问次数
+    ctx.session.view = 0;
+  } else {
+    ctx.session.view += 1;
+  }
+  ctx.rest(userInfo);
 };
 
 module.exports = {
