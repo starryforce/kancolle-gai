@@ -25,7 +25,7 @@ app.use(bodyParser());
 app.use(session({
   key: "sessionId",
   store: new Store(),
-  maxAge: 3 * 24 * 60 * 60,
+  maxAge: 3 * 24 * 60 * 60 * 1000,
 }));
 // 模板
 app.use(templating('views', {
