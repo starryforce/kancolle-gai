@@ -9,7 +9,7 @@ const templating = require('./middlewares/templating');
 const rest = require('./middlewares/rest');
 
 const app = new Koa();
-app.use(async (ctx, next) => {
+app.use(async(ctx, next) => {
   console.log(`Process ${ctx.request.method} ${ctx.request.url}...`);
   const start = new Date().getTime();
   await next();
@@ -25,7 +25,7 @@ app.use(bodyParser());
 app.use(session({
   key: "sessionId",
   store: new Store(),
-  maxAge: 200000,
+  maxAge: 3 * 24 * 60 * 60,
 }));
 // 模板
 app.use(templating('views', {
