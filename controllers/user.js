@@ -18,7 +18,7 @@ const signup = async (ctx) => {
   console.log(`created: ${JSON.stringify(result)}`);
 };
 
-const signin = async (ctx) => {
+const signIn = async (ctx) => {
   console.log('enter signin');
   const {
     name,
@@ -56,30 +56,29 @@ const signin = async (ctx) => {
   });
 };
 
-const checkLogin = async (ctx) => {
-  if (ctx.session.name) {
-    ctx.rest({
-      result: 'logined',
-    });
-  }
-};
-
-const logout = async (ctx) => {
+const signOut = async (ctx) => {
   if (!ctx.session.name) {
     throw {
       code: 'auth:is_not_login',
       message: 'not login',
     };
   }
-  ctx.session.name = null;
+  ctx.session = {};
   ctx.rest({
     result: 'logout success',
   });
 };
 
+const checkLogin = async (ctx) => {
+  const isLogin = !!ctx.session.name;
+  ctx.rest({
+    isLogin,
+  });
+};
+
 module.exports = {
   'POST /v1/register': signup,
-  'POST /v1/login': signin,
-  'POST /v1/logout': logout,
-  'POST /v1/checkLogin': checkLogin,
+  'POST /v1/sign_in': signIn,
+  'POST /v1/sign_out': signOut,
+  'GET /v1/checkLogin': checkLogin,
 };
